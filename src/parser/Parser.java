@@ -1,4 +1,4 @@
-package gti310.tp3.parser;
+package parser;
 
 /**
  * The Parser interface defines the method through which an input file will be
@@ -12,7 +12,7 @@ package gti310.tp3.parser;
  *      
  * 		Parser<MyObject> parser = new ConcreteParse();
  * 
- * @author François Caron <francois.caron.7@ens.etsmtl.ca>
+ * @author Franï¿½ois Caron <francois.caron.7@ens.etsmtl.ca>
  *
  * @param <E> A template that must be redifined by the implementations of the
  *            Parser interface.
