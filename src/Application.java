@@ -1,4 +1,6 @@
+import model.RoutesModel;
 import parser.RouteFileParser;
+import solver.RouteSolver;
 
 
 
@@ -21,7 +23,7 @@ public class Application {
 	 */
 	public static void main(String args[]) {
 		System.out.println("Unreal Networks Solver !");
-		RouteFileParser rfp = new RouteFileParser();
-		rfp.parse(args[0]);
+		RouteSolver rs = new RouteSolver();
+		rs.solve(new RouteFileParser().parse(args[0]));
 	}
 }
