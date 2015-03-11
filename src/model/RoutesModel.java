@@ -10,7 +10,7 @@ public class RoutesModel {
 		_nbSommet = nbSommet;
 		_matriceVille = new int [nbSommet][nbSommet];
 	}
-	public int getnbSommet() {
+	public int getNbSommet() {
 		return _nbSommet;
 	}
 	public int getSommetDepart() {
@@ -26,9 +26,11 @@ public class RoutesModel {
 	}
 
 	public void setPoids(int villeDepart, int villeFin, int poids) {
-		_matriceVille[villeDepart][villeFin] = poids;
+		_matriceVille[villeDepart-1][villeFin-1] = poids;
 	}
-	
+	public int getPoids(int villeDepart, int villeFin) {
+		return _matriceVille[villeDepart-1][villeFin-1];
+	}
 	
 
 }
