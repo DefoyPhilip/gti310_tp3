@@ -1,6 +1,10 @@
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 import model.RoutesModel;
 import parser.RouteFileParser;
 import solver.RouteSolver;
+import writer.RouteFileWriter;
 
 
 
@@ -23,7 +27,15 @@ public class Application {
 	 */
 	public static void main(String args[]) {
 		System.out.println("Unreal Networks Solver !");
-		RouteSolver rs = new RouteSolver();
-		rs.solve(new RouteFileParser().parse(args[0]));
+		RouteFileWriter writer = new RouteFileWriter();
+		try {
+			writer.write(args[1], new RouteSolver().solve(new RouteFileParser().parse(args[0])));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

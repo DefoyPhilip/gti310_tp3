@@ -1,5 +1,8 @@
 package writer;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 /**
  * The Writer interface defines a method to write user-defined objects to file.
  * The classes implementing the Writer interface should explicitaly define the
@@ -23,6 +26,8 @@ public interface Writer<T> {
 	 * Write the given object's data to file.
 	 * @param filename The complete path to the file that will be created.
 	 * @param output The data which will be written to the file.
+	 * @throws UnsupportedEncodingException 
+	 * @throws FileNotFoundException 
 	 */
-	void write(String filename, T output);
+	void write(String filename, T output) throws FileNotFoundException, UnsupportedEncodingException;
 }

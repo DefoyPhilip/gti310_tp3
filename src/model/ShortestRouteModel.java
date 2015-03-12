@@ -24,6 +24,15 @@ public class ShortestRouteModel {
 	public int getPoids(int sommet){
 		return _shortRouteArr[sommet-1][1];
 	}
+	public int getSommetParent(int sommet){
+		return  _shortRouteArr[sommet-1][0];
+	}
+	public int getNbSommet(){
+		return _shortRouteArr.length;
+	}
+	public int getStartPoint() {
+		return _startPoint;
+	}
 	public void printModel(){
 		System.out.println("////////PrintModelHere");
 		for (int i = 0; i < _shortRouteArr.length; i++) {

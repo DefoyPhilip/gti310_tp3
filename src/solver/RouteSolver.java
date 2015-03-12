@@ -44,7 +44,6 @@ public class RouteSolver implements Solver<RoutesModel, ShortestRouteModel>{
 			if(prochainSommet != 0)
 				sommetDejaVisite[prochainSommet-1] = true;
 		}
-		shortRoute.printModel();
 		return shortRoute;
 	}
 }
