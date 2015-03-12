@@ -16,10 +16,8 @@ public class ShortestRouteModel {
 				_shortRouteArr[i][1] = 10000000;
 			}
 		}
-		printModel();
 	}
 	public void setPoids(int sommet, int parent, int poids){
-		System.out.println("save: "+sommet+" avec"+parent+": "+poids);
 		_shortRouteArr[sommet-1][0] = parent;
 		_shortRouteArr[sommet-1][1] = poids;
 	}
