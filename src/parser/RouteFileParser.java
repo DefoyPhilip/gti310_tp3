@@ -41,9 +41,7 @@ public class RouteFileParser implements Parser<Object>{
 				// if not end of document
 				else{
 					String[] splitedLine = line.split("\\t");
-					//System.out.println(splitedLine.length);
-					
-					
+						
 					// the second line contains the information
 					// for the first vertex to itself
 					if (currentLine == 1 ) {
@@ -65,7 +63,7 @@ public class RouteFileParser implements Parser<Object>{
 			
 			textReader.close();
 			
-			routesModel.print();
+			//routesModel.print();
 			
 			return routesModel;
 			

@@ -46,11 +46,11 @@ public class RoutesModel {
 
 	}
 	
-	public LinkedList<Integer> getNeighbours(){
-		return this.getNeighbours(currentVertex);
+	public LinkedList<Integer> getNeighbors(){
+		return this.getNeighbors(currentVertex);
 	}
 	
-	public LinkedList<Integer> getNeighbours(int vertex){
+	public LinkedList<Integer> getNeighbors(int vertex){
 		LinkedList <Integer> neighbours = new LinkedList<Integer>();
 		for (int i = 0; i < this.data[vertex].length; i++) {
 			if (this.data[vertex][i] > 0){
