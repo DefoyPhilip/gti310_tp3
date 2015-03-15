@@ -1,4 +1,8 @@
+import Models.RoutesModel;
+import Models.ShortestRoutesModel;
 import parser.RouteFileParser;
+import solver.RouteSolver;
+import solver.Solver;
 
 
 
@@ -6,7 +10,7 @@ import parser.RouteFileParser;
  * The Application class defines a template method to call the elements to
  * solve the problem Unreal-Networks is faï¿½ï¿½ï¿½ing.
  * 
- * @author Franï¿½ï¿½ï¿½ois Caron <francois.caron.7@ens.etsmtl.ca>
+ * @author François Caron <francois.caron.7@ens.etsmtl.ca>
  */
 public class Application {
 
@@ -22,6 +26,8 @@ public class Application {
 	public static void main(String args[]) {
 		System.out.println("Unreal Networks Solver !");
 		RouteFileParser rfp = new RouteFileParser();
-		rfp.parse(args[0]);
+		Solver<RoutesModel, ShortestRoutesModel> rs = new RouteSolver();
+		rs.solve(rfp.parse(args[0]));
+		
 	}
 }
