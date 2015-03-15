@@ -1,36 +1,45 @@
 package parser;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.regex.Pattern;
 
-public class RouteFileParser implements Parser<Object>{
+import model.RoutesModel;
+
+public class RouteFileParser implements Parser<RoutesModel>{
+	
+	private RoutesModel _route;
 
 	public RouteFileParser() {
+		
 	}
 
 	@Override
-	public Object parse(String filename) {
+	public RoutesModel parse(String filename) {
 		try {
-			FileReader reader = new FileReader(filename);
-			BufferedReader textReader = new BufferedReader(reader);
+			BufferedReader textReader = new BufferedReader(new FileReader(filename));
 			Boolean stillReading = true;
+			int currentLine = 0;
 			while (stillReading) {
 				String line = textReader.readLine();
+				currentLine++;
 				if(Pattern.matches("[$]", line)){
 					stillReading = false;
 				}
 				else{
 					String[] splitedLine = line.split("\\t");
-					for (int i = 0; i < splitedLine.length; i++) {
-						System.out.println(splitedLine[i]);
+					if(currentLine == 1){
+						_route = new RoutesModel(Integer.parseInt(splitedLine[0]));
 					}
+					else if(currentLine == 2){
+						_route.setSommetDepart(Integer.parseInt(splitedLine[0]));
+					}
+					else{
+						_route.setPoids(Integer.parseInt(splitedLine[0]), Integer.parseInt(splitedLine[1]), Integer.parseInt(splitedLine[2]));
+					}
+					
 				}
 					
 			}
@@ -42,7 +51,7 @@ public class RouteFileParser implements Parser<Object>{
 			e.printStackTrace();
 		}
 		
-		return null;
+		return _route;
 	}
 
 }
