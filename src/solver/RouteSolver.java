@@ -40,8 +40,8 @@ public class RouteSolver implements Solver<RoutesModel, ShortestRouteModel>{
 				}
 				
 			}
-			System.out.println(sommetCourant);
-			shortRoute.printModel();
+			//System.out.println(sommetCourant);
+			//shortRoute.printModel();
 			sommetCourant = prochainSommet;
 			// si prochainSommet = 0, il n'y a plus de sommet à visité.
 			if(prochainSommet != 0)
