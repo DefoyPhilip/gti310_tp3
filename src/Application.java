@@ -31,8 +31,7 @@ public class Application {
 		try {
 			writer.write(args[1], new RouteSolver().solve(new RouteFileParser().parse(args[0])));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Fichier introuvable");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

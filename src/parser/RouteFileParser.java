@@ -1,6 +1,7 @@
 package parser;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,11 +21,18 @@ public class RouteFileParser implements Parser<RoutesModel>{
 	public RoutesModel parse(String filename) {
 		try {
 			BufferedReader textReader = new BufferedReader(new FileReader(filename));
+
+			if (!getFileExtension(filename).equals(".txt")){
+				System.out.println("Le fichier d'entrée doit être au format .txt");
+				System.exit(0);
+			}
+
 			Boolean stillReading = true;
 			int currentLine = 0;
 			while (stillReading) {
 				String line = textReader.readLine();
 				currentLine++;
+
 				if(Pattern.matches("[$]", line)){
 					stillReading = false;
 				}
@@ -44,14 +52,19 @@ public class RouteFileParser implements Parser<RoutesModel>{
 					
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Fichier introuvable");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 		
 		return _route;
 	}
 
+	private String getFileExtension(String filename) {
+	    int lastIndexOf = filename.lastIndexOf(".");
+	    if (lastIndexOf == -1) {
+	        return ""; // empty extension
+	    }
+	    return filename.substring(lastIndexOf);
+	}
 }
