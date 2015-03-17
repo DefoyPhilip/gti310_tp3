@@ -38,19 +38,35 @@ public class RouteFileParser implements Parser<RoutesModel>{
 				}
 				else{
 					String[] splitedLine = line.split("\\t");
+					
+					if (splitedLine.length < 1 || splitedLine.length > 3) invalidData();
+					for (int i = 0; i < splitedLine.length; i++) {
+						try {
+							Integer.parseInt(splitedLine[i]);
+						} catch(Exception e) {
+							invalidData();
+						}
+					}
+					
 					if(currentLine == 1){
 						_route = new RoutesModel(Integer.parseInt(splitedLine[0]));
 					}
 					else if(currentLine == 2){
+						if (Integer.parseInt(splitedLine[0]) > _route.getNbSommet()) invalidData();
 						_route.setSommetDepart(Integer.parseInt(splitedLine[0]));
 					}
 					else{
+						if (splitedLine.length < 3) invalidData();
+						if (Integer.parseInt(splitedLine[0]) > _route.getNbSommet()) invalidData();
 						_route.setPoids(Integer.parseInt(splitedLine[0]), Integer.parseInt(splitedLine[1]), Integer.parseInt(splitedLine[2]));
 					}
 					
 				}
 					
 			}
+			
+			textReader.close(); 
+			
 		} catch (FileNotFoundException e) {
 			System.out.println("Fichier introuvable");
 		} catch (IOException e) {
@@ -66,5 +82,10 @@ public class RouteFileParser implements Parser<RoutesModel>{
 	        return ""; // empty extension
 	    }
 	    return filename.substring(lastIndexOf);
+	}
+	
+	private void invalidData() {
+		System.out.println("Données invalide");
+		System.exit(0);
 	}
 }
