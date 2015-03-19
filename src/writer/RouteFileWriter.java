@@ -14,9 +14,16 @@ public class RouteFileWriter implements Writer<ShortestRouteModel>{
 	@Override
 	public void write(String filename, ShortestRouteModel output) throws FileNotFoundException, UnsupportedEncodingException {
 		_writer = new PrintWriter(filename, "UTF-8");
-		_writer.println(output.getStartPoint());
-		for (int i = 1; i <= output.getNbSommet(); i++) {
-			_writer.println(i+"\t"+output.getSommetParent(i)+"\t"+output.getPoids(i));
+		try {
+			_writer.println(output.getStartPoint());
+		
+			for (int i = 1; i <= output.getNbSommet(); i++) {
+				_writer.println(i+"\t"+output.getSommetParent(i)+"\t"+output.getPoids(i));
+			}
+			
+			System.out.println("Fichier de sortie '" +filename+ "' généré.");
+		} catch(Exception e) {
+			System.out.println("Aucun fichier de sortie n'a été généré.");
 		}
 		_writer.close();
 	}
