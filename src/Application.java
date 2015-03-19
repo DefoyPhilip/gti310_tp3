@@ -1,7 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 
-import model.RoutesModel;
 import parser.RouteFileParser;
 import solver.RouteSolver;
 import writer.RouteFileWriter;

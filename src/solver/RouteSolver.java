@@ -24,47 +24,50 @@ public class RouteSolver implements Solver<RoutesModel, ShortestRouteModel>{
 	* @param 	route	a RoutesModel containing the graph to analyze
 	* @return	shortRoute	A model containing all the computed shortest paths
 	* 
-	* analyse asymptotique
+	* analyse asymptotique : 
 	* 
+	* s: nombre de sommets
+	* 
+	* Groupe O(s^2)
 	*/
 	public ShortestRouteModel solve(RoutesModel route) {
 		try {
-			ShortestRouteModel shortRoute = new ShortestRouteModel(route.getNbSommet(),route.getSommetDepart());
-			boolean[] sommetDejaVisite = new boolean[route.getNbSommet()];
-			int sommetCourant = route.getSommetDepart();
+			ShortestRouteModel shortRoute = new ShortestRouteModel(route.getNbSommet(),route.getSommetDepart());			//1
+			boolean[] sommetDejaVisite = new boolean[route.getNbSommet()];													//1
+			int sommetCourant = route.getSommetDepart();																	//1
 			//set le point de départ a déjà  visité
-			sommetDejaVisite[sommetCourant-1] = true;
+			sommetDejaVisite[sommetCourant-1] = true;																		//1
 			// boucle a travers tout les sommets
-			for(int i = route.getNbSommet(); i > 0; i--) {
+			for(int i = route.getNbSommet(); i > 0; i--) {																	//s
 				//initialise un poids/sommet de base pour compraré avec
 				// les sommets pour avoir le prochain a utilisé (plus petit)
-				int prochainSommetPoids = 10000000;
-				int prochainSommet = 0;
+				int prochainSommetPoids = 10000000;																			//1
+				int prochainSommet = 0;																						//1
 				//boucle à  travert tout les sommets à  comparé.
-				for(int s = 1; s <= route.getNbSommet();s++){
-					int poidsSommetCourantASommetS = route.getPoids(sommetCourant, s);
-					int plusPetitPoids = shortRoute.getPoids(s);
+				for(int s = 1; s <= route.getNbSommet();s++){																//s
+					int poidsSommetCourantASommetS = route.getPoids(sommetCourant, s);										//1																			//1
+					int plusPetitPoids = shortRoute.getPoids(s);															//1
 					// Vérifie si le sommet a comparé est adjacent est au sommet courant
-					if(s != sommetCourant && poidsSommetCourantASommetS != 0){
-						int poidsAComparer = poidsSommetCourantASommetS + shortRoute.getPoids(sommetCourant);		
-						if(poidsAComparer < plusPetitPoids){
-							plusPetitPoids = poidsAComparer;
-							shortRoute.setPoids(s, sommetCourant, poidsAComparer);
+					if(s != sommetCourant && poidsSommetCourantASommetS != 0){												//1
+						int poidsAComparer = poidsSommetCourantASommetS + shortRoute.getPoids(sommetCourant);				//1	
+						if(poidsAComparer < plusPetitPoids){																//1
+							plusPetitPoids = poidsAComparer;																//1
+							shortRoute.setPoids(s, sommetCourant, poidsAComparer);											//1
 						}
 					}
 					// vérifie si le sommet à  comparé devrais àªtre le prochain pls petit sommet à  visité
-					if(plusPetitPoids < prochainSommetPoids && !sommetDejaVisite[s-1] && plusPetitPoids!=0){
-						prochainSommetPoids = plusPetitPoids;
-						prochainSommet = s;
+					if(plusPetitPoids < prochainSommetPoids && !sommetDejaVisite[s-1] && plusPetitPoids!=0){				//1
+						prochainSommetPoids = plusPetitPoids;																//1
+						prochainSommet = s;																					//1
 					}
 					
 				}
 				//System.out.println(sommetCourant);
 				//shortRoute.printModel();
-				sommetCourant = prochainSommet;
+				sommetCourant = prochainSommet;																				//1
 				// si prochainSommet = 0, il n'y a plus de sommet à  visité.
-				if(prochainSommet != 0)
-					sommetDejaVisite[prochainSommet-1] = true;
+				if(prochainSommet != 0)																						//1
+					sommetDejaVisite[prochainSommet-1] = true;																//1
 			}
 			return shortRoute;
 		} catch (Exception e) {

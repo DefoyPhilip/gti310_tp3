@@ -39,7 +39,7 @@ public class RouteFileWriter implements Writer<ShortestRouteModel>{
 				_writer.println(i+"\t"+output.getSommetParent(i)+"\t"+output.getPoids(i));
 			}
 			
-			System.out.println("Fichier de sortie '" +filename+ "' généré.");
+			System.out.println("Fichier de sortie '" +filename+ "' généré : " + filename);
 		} catch(Exception e) {
 			System.out.println("Aucun fichier de sortie n'a été généré.");
 		}
