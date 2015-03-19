@@ -1,3 +1,11 @@
+/**
+ * Date: 10 Mars 2015
+ * Description: Classe qui gère l'information relative à un graphe bidirectionnel, utilisant
+ * 				une matrice de poids. 
+ * 
+ * @author Stéphane Lam, Philip Defoy
+ */
+
 package model;
 
 public class RoutesModel {
