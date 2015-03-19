@@ -1,3 +1,12 @@
+/**
+ * Date: 10 Mars 2015
+ * Description: À la réception d'un ShortestRouteModel contenant les distances et chemins optimaux, cette
+ * 				classe écrit les informations relatives au ShortestRouteModel dans un fichier texte
+ * 				afin que les utilisateurs puisse les consulter.
+ * 
+ * @author Stéphane Lam, Philip Defoy
+ */
+
 package writer;
 
 import java.io.FileNotFoundException;
@@ -12,6 +21,15 @@ public class RouteFileWriter implements Writer<ShortestRouteModel>{
 	}
 
 	@Override
+	/**
+	 * Date: 10 Mars 2015
+	 * Description: Méthode qui écrit les distances optimales dans un fichier texte
+	 * 
+	 * @param	filename		le path du fichier à créer
+	 * @param	output			le modèle qui contient les distances et routes optimales
+	 * 
+	 * @author Stéphane Lam, Philip Defoy
+	 */
 	public void write(String filename, ShortestRouteModel output) throws FileNotFoundException, UnsupportedEncodingException {
 		_writer = new PrintWriter(filename, "UTF-8");
 		try {

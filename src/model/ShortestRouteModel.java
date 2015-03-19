@@ -1,3 +1,11 @@
+/**
+ * Date: 10 Mars 2015
+ * Description: Classe utilisée lors du calcul des chemins le plus court. Se construit graduellement pour
+ * 				finalement contenir les différentes distances optimales.
+ * 
+ * @author Stéphane Lam, Philip Defoy
+ */
+
 package model;
 
 public class ShortestRouteModel {

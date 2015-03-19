@@ -1,7 +1,12 @@
+/**
+ * Date: 10 Mars 2015
+ * Description: Classe qui analyse un fichier texte et construit un graphe de type RoutesModel
+ * 
+ * @author Stéphane Lam, Philip Defoy
+ */
 package parser;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,6 +23,17 @@ public class RouteFileParser implements Parser<RoutesModel>{
 	}
 
 	@Override
+	/**
+	* Process
+	* 
+	* Method that parses a given text file and builds a graph using the RoutesModel class
+	* 
+	* 
+	* @param 	filename	the path to the file to parse
+	* @return	route		a RoutesModel containing the graph
+	* 
+	* 
+	*/
 	public RoutesModel parse(String filename) {
 		try {
 			BufferedReader textReader = new BufferedReader(new FileReader(filename));
@@ -76,6 +92,14 @@ public class RouteFileParser implements Parser<RoutesModel>{
 		return _route;
 	}
 
+	/**
+	* Helper method that returns the file extenion of a give file path
+	* 
+	* @param 	filename	the path to the file to parse
+	* @return	string		the file extension
+	* 
+	* 
+	*/
 	private String getFileExtension(String filename) {
 	    int lastIndexOf = filename.lastIndexOf(".");
 	    if (lastIndexOf == -1) {
@@ -84,6 +108,11 @@ public class RouteFileParser implements Parser<RoutesModel>{
 	    return filename.substring(lastIndexOf);
 	}
 	
+	
+	/**
+	* Method that closes the program in case of invalid data
+	* 
+	*/
 	private void invalidData() {
 		System.out.println("Données invalide");
 		System.exit(0);
